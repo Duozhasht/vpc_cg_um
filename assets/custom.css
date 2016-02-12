@@ -17,3 +17,31 @@ input#selectFile {
   border-radius: 0px;
   background-size: 150px 100px;
 }
+
+/* prevents selection when left click dragging */
+.disable-selection {
+		-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;
+}
+/* prevents cursor from changing to the i bar on the overlays*/
+.noIbar {
+		cursor:default;
+}
+.annotationDialog, .relabelDialog {
+		z-index: 1000;
+		position: absolute;
+		margin: 0px;
+		left: 40%;
+		top: 40%;
+		width: 300px;
+		border: 1px black solid;
+		border-radius: 5px;
+}
+.annotationTextInputOptions {
+		padding: 5px 0px;
+}
+.annotationTextInput {
+		margin-left: 5px;
+}
+.annotationDialogConfirm {
+		float: right;
+}

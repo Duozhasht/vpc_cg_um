@@ -5,7 +5,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>CR Tool</title>
 		<link href="assets/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link href="assets/custom.css" rel="stylesheet">
+		<link href="assets/dialogPolyfill.css" rel="stylesheet">
+
 	</head>
 	<body>
 		<div class="container-fluid">
@@ -22,12 +25,47 @@
 						</div>
 					</form>
 				</div>
-				
+
 			</div>
 			<div id="loadProgress">Image Load Progress:</div>
 			<div class="row">
 				<div class="col-xs-12 col-md-4 col-lg-4 ">
-					asasd
+
+					<a id="hideOP"><i class="fa fa-pencil-square-o"></i></a>
+					<div class="options">
+						<table>
+							<tr>
+								<td>
+									<a id="activate" class="list-group-item"><i class="fa fa-angle-right"></i></a>
+								</td>
+								<td>
+									<a id="enableLength" class="list-group-item"><i class="fa fa-arrows-h"></i></a>
+								</td>
+								<td>
+									<a id="pan" class="list-group-item"><i class="fa fa-arrows"></i></a>
+								</td>
+								<td>
+									<a id="zoom" class="list-group-item"><i class="fa fa-search-plus"></i></a>
+								</td>
+								<td>
+									<a id="defaultStrategy" class="list-group-item"><i class="fa fa-picture-o"></i></a>
+								</td>
+								<td>
+									<a id="osirixStrategy" class="list-group-item"><i class="fa fa-picture-o"></i></a>
+								</td>
+								<td>
+									<a id="save" class="list-group-item"><i class="fa fa-floppy-o"></i></a>
+								</td>
+							</table>
+								<table>
+									<tr>
+										<td><a id="clearAngleData" class="list-group-item"><i class="fa fa-eraser"></i>   <i class="fa fa-angle-right"></i></a></td>
+										<td><a id="clearLengthData" class="list-group-item"><i class="fa fa-eraser"></i>   <i class="fa fa-arrows-h"></i></a></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</table>
+								</div>
 				</div>
 				<div class="col-xs-12 col-md-8 col-lg-8">
 					<div style="width:800px;height:600px;position:relative;color: white;display:inline-block;border-style:solid;border-color:black;"
@@ -58,91 +96,13 @@
 	<script src="assets/cornerstone/jpx.min.js"></script>
 	<!-- include the cornerstoneWADOImageLoader library -->
 	<script src="assets/cornerstone/cornerstoneWADOImageLoader.js"></script>
+	<!-- include the Dialog library -->
+	<!--script src="assets/cornerstone/dialogPolyfill.js"></script-->
 
-<script>
-
-    cornerstoneWADOImageLoader.configure({
-        beforeSend: function(xhr) {
-            // Add custom headers here (e.g. auth tokens)
-            //xhr.setRequestHeader('x-auth-token', 'my auth token');
-        }
-    });
-
-    var loaded = false;
-
-    function loadAndViewImage(imageId) {
-        var element = $('#dicomImage').get(0);
-        //try {
-        cornerstone.loadImage(imageId).then(function(image) {
-            console.log(image);
-            console.log("asdasdasd");
-            var viewport = cornerstone.getDefaultViewportForImage(element, image);
-            $('#toggleModalityLUT').attr("checked",viewport.modalityLUT !== undefined);
-            $('#toggleVOILUT').attr("checked",viewport.voiLUT !== undefined);
-            cornerstone.displayImage(element, image, viewport);
-            if(loaded === false) {
-                cornerstoneTools.mouseInput.enable(element);
-                cornerstoneTools.mouseWheelInput.enable(element);
-                cornerstoneTools.wwwc.activate(element, 1); // ww/wc is the default tool for left mouse button
-                cornerstoneTools.pan.activate(element, 2); // pan is the default tool for middle mouse button
-                cornerstoneTools.zoom.activate(element, 4); // zoom is the default tool for right mouse button
-                cornerstoneTools.zoomWheel.activate(element); // zoom is the default tool for middle mouse wheel
-                loaded = true;
-            }
-        }, function(err) {
-            alert(err);
-        });
-        /*}
-         catch(err) {
-         alert(err);
-         }*/
-    }
-
-    $(cornerstone).bind('CornerstoneImageLoadProgress', function(eventData) {
-        $('#loadProgress').text('Image Load Progress: ' + eventData.percentComplete + "%");
-    });
-
-    $(document).ready(function() {
-
-        var element = $('#dicomImage').get(0);
-        cornerstone.enable(element);
-
-        $('#selectFile').on('change', function(e) {
-            // Add the file to the cornerstoneFileImageLoader and get unique
-            // number for that file
-            var file = e.target.files[0];
-            var imageId = cornerstoneWADOImageLoader.fileManager.add(file);
-            loadAndViewImage(imageId);
-        });
-
-        $('#toggleModalityLUT').on('click', function() {
-            var applyModalityLUT = $('#toggleModalityLUT').is(":checked");
-            console.log('applyModalityLUT=', applyModalityLUT);
-            var image = cornerstone.getImage(element);
-            var viewport = cornerstone.getViewport(element);
-            if(applyModalityLUT) {
-                viewport.modalityLUT = image.modalityLUT;
-            } else {
-                viewport.modalityLUT = undefined;
-            }
-            cornerstone.setViewport(element, viewport);
-        });
-
-        $('#toggleVOILUT').on('click', function() {
-            var applyVOILUT = $('#toggleVOILUT').is(":checked");
-            console.log('applyVOILUT=', applyVOILUT);
-            var image = cornerstone.getImage(element);
-            var viewport = cornerstone.getViewport(element);
-            if(applyVOILUT) {
-                viewport.voiLUT = image.voiLUT;
-            } else {
-                viewport.voiLUT = undefined;
-            }
-            cornerstone.setViewport(element, viewport);
-        });
+	<!-- include All's function -->
+	<script src="assets/cornerstone/functions.js"></script>
 
 
-    });
 
-</script>
+
 </html>
