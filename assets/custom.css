@@ -45,3 +45,16 @@ input#selectFile {
 .annotationDialogConfirm {
 		float: right;
 }
+
+
+/*Deal with dropzone*/
+.dz-size {
+	visibility: hidden;
+}
+
+.dz-progress {
+	visibility: hidden;
+}
+
+
+
