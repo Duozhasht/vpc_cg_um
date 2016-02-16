@@ -4110,9 +4110,13 @@ if (typeof cornerstoneTools === 'undefined') {
 
             if (rAngle) {
                 var str = '00B0'; // degrees symbol
-                var text = rAngle.toString() + String.fromCharCode(parseInt(str, 16)) + suffix;
+                var text = "Angle = " + rAngle.toString() + String.fromCharCode(parseInt(str, 16)) + suffix;
+                
+                var cunha = 180-rAngle;
+                var text2= "Wedge = " + (Math.round(cunha*100)/100).toString() + "mm" + suffix;
 
                 var distance = 15;
+                var distance2 = 25;
 
                 var textX = handleMiddleCanvas.x + distance;
                 var textY = handleMiddleCanvas.y + distance;
@@ -4128,6 +4132,7 @@ if (typeof cornerstoneTools === 'undefined') {
 
                 textY = handleMiddleCanvas.y;
                 cornerstoneTools.drawTextBox(context, text, textX, textY, color);
+                cornerstoneTools.drawTextBox(context, text2, textX, textY+20, color);
             }
 
             context.restore();
