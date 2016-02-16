@@ -1,22 +1,83 @@
 body {
-	background-color: #000;
+	background-color: #141414;
+	color: #ecf0f1;
+}
+
+.centering {
+        float: none;
+        margin: 0 auto;
+    }
+
+
+/* Deal with patient info */
+
+.divider {
+	margin-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+	background-color: #141414;
+	border: 2px solid #c0392b;
+}
+
+
+/* Deal with tools box */
+
+
+.list-group-item {
+	background-color: #141414;
+	color: #c0392b;	
+}
+
+
+a.list-group-item {
+	width: 100px;
+	border: 2px solid #c0392b;
+	color: #c0392b;	
+}
+
+.nav-pills>li>a:hover {
+	background-color: #c0392b;
 	color: #ecf0f1;
 }
 
 
-input#selectFile {
-  display: inline-block;
-  width: 100%;
-  padding: 120px 0 0 0;
-  height: 100px;
-  overflow: hidden;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  background: url('http://archisnapper.com/cloud.png') center center no-repeat #e4e4e4;
-  border-radius: 0px;
-  background-size: 150px 100px;
+
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover  {
+	background-color: #c0392b;
+	border: 2px solid #c0392b;
 }
+
+
+#tool-content {
+	padding-top: 100px;
+	padding-bottom: 50px;
+}
+
+#toolbar {
+	padding-bottom: 50px;
+}
+
+#header {
+	padding-bottom: 15px;
+}
+
+#header>hr {
+	width: 90%;
+}
+
+#patient-info {
+	padding-bottom: 50px;
+}
+
+#patient-info>h3 {
+	padding-bottom: 25px;
+}
+
+
+
+
 
 /* prevents selection when left click dragging */
 .disable-selection {
