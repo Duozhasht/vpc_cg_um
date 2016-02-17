@@ -1,83 +1,4 @@
-body {
-	background-color: #141414;
-	color: #ecf0f1;
-}
-
-.centering {
-        float: none;
-        margin: 0 auto;
-    }
-
-
-/* Deal with patient info */
-
-.divider {
-	margin-bottom: 10px;
-	margin-bottom: 10px;
-}
-
-.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
-	background-color: #141414;
-	border: 2px solid #c0392b;
-}
-
-
-/* Deal with tools box */
-
-
-.list-group-item {
-	background-color: #141414;
-	color: #c0392b;	
-}
-
-
-a.list-group-item {
-	width: 100px;
-	border: 2px solid #c0392b;
-	color: #c0392b;	
-}
-
-.nav-pills>li>a:hover {
-	background-color: #c0392b;
-	color: #ecf0f1;
-}
-
-
-
-.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover  {
-	background-color: #c0392b;
-	border: 2px solid #c0392b;
-}
-
-
-#tool-content {
-	padding-top: 100px;
-	padding-bottom: 50px;
-}
-
-#toolbar {
-	padding-bottom: 50px;
-}
-
-#header {
-	padding-bottom: 15px;
-}
-
-#header>hr {
-	width: 90%;
-}
-
-#patient-info {
-	padding-bottom: 50px;
-}
-
-#patient-info>h3 {
-	padding-bottom: 25px;
-}
-
-
-
-
+/*DEPENDENCIES FROM CORNERSTONE*/
 
 /* prevents selection when left click dragging */
 .disable-selection {
@@ -107,15 +28,109 @@ a.list-group-item {
 		float: right;
 }
 
+/**********************************/
+/**********************************/
+/********** Start Here ************/
+/**********************************/
+/**********************************/
 
-/*Deal with dropzone*/
-.dz-size {
-	visibility: hidden;
+body {
+	background-color: #141414;
+	color: #ecf0f1;
+
 }
 
-.dz-progress {
-	visibility: hidden;
+.img-responsive {
+    margin: 0 auto;
 }
+
+.centering {
+        float: none;
+        margin: 0 auto;
+    }
+
+
+/* Deal with patient info */
+
+.divider {
+	margin-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+	background-color: #141414;
+	border: 2px solid #7b96b0;
+}
+
+
+/* Deal with tools box */
+
+
+.list-group-item {
+	background-color: #141414;
+	color: #7b96b0;	
+}
+
+
+a.list-group-item {
+	width: 100px;
+	border: 2px solid #7b96b0;
+	color: #7b96b0;	
+}
+
+.nav-pills>li>a:hover {
+	background-color: #7b96b0;
+	color: #ecf0f1;
+}
+
+
+
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover  {
+	background-color: #7b96b0;
+	border: 2px solid #7b96b0;
+}
+
+
+#tool-content {
+	padding-top: 100px;
+	padding-bottom: 50px;
+}
+
+#canvas {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+#header {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+#header>hr {
+	width: 90%;
+}
+
+#patient-info {
+	padding-bottom: 50px;
+}
+
+#patient-info>h3 {
+	padding-bottom: 25px;
+}
+
+#my-dropzone {
+	background-color: #141414;
+	border-color: #141414;
+}
+
+#main-title {
+
+}
+
+
+
+
+
 
 
 

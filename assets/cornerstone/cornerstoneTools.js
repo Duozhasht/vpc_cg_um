@@ -4832,6 +4832,11 @@ if (typeof cornerstoneTools === 'undefined') {
 
     var startPoints;
 
+    var configuration = {
+        maxScale : '10',
+        minScale: '1'
+    };
+
     function changeViewportScale(viewport, ticks) {
         var config = cornerstoneTools.zoom.getConfiguration();
         var pow = 1.7;
@@ -5012,13 +5017,13 @@ if (typeof cornerstoneTools === 'undefined') {
     }
 
     function mouseWheelCallback(e, eventData) {
-        var ticks = -eventData.direction / 4;
+        var ticks = -eventData.direction / 2;
         var viewport = changeViewportScale(eventData.viewport, ticks);
         cornerstone.setViewport(eventData.element, viewport);
     }
 
     function touchPinchCallback(e, eventData) {
-        var ticks = eventData.direction / 4;
+        var ticks = eventData.direction / 2;
         var viewport = changeViewportScale(eventData.viewport, ticks);
         cornerstone.setViewport(eventData.element, viewport);
     }

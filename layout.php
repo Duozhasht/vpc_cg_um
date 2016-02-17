@@ -5,54 +5,67 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>CR Tool</title>
 		<link href="assets/bootstrap-3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Fonts -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link href='https://fonts.googleapis.com/css?family=Francois+One' rel='stylesheet' type='text/css'>
+		
 		<link href="assets/custom.css" rel="stylesheet">
+
+
 		<link href="assets/dialogPolyfill.css" rel="stylesheet">
+		
+
 		<link href="assets/dropzone/dropzone.css" rel="stylesheet">
 		<link href="assets/dropzone/basic.css" rel="stylesheet">
 	</head>
 	<body>
 		<div class="container-fluid">
 			<div class="row" id="content">
-				<div class="col-lg-3">
+				
+				<div class="col-lg-offset-1 col-lg-3">
 					<div class="row" id="header">
-						<hr>
-						<h2 class="text-center">CR Tool</h2>
-						<hr>
+						<div class="col-xs-12">
+							<img src="assets/images/logo.png" class="img-responsive" alt="Logo" width="120" height="145">
+						</div>
+						<div class="col-xs-12">
+							
+							<h2 class="text-center" id="main-title">CR Tool</h2>
+							<hr>
+						</div>
 					</div>
 					
 					<div class="row" id="patient-info">
-						<div class="col-xs-offset-1 col-xs-10">
+						<div class="col-xs-10">
 							<h3 class="text-center">Patient Info</h3>
 							<ul class="nav nav-pills nav-stacked" id="patient-info-ul">
 								<li role="presentation" class="active">
 									<a>
-										<span style="color:#c0392b">Patient Name :</span>
+										<span style="color:#7b96b0">Patient Name :</span>
 										<span id="patient-name">asdasd</span>
 									</a>
 								</li>
 								<li role="presentation" class="active">
 									<a>
-										<span style="color:#c0392b">Patient Birth Date :</span>
+										<span style="color:#7b96b0">Patient Birth Date :</span>
 										<span id="patient-bd">asdasd</span>
 									</a>
 								</li>
 								<li role="presentation" class="active">
 									<a>
-										<span style="color:#c0392b">Patient Sex :</span>
+										<span style="color:#7b96b0">Patient Sex :</span>
 										<span id="patient-sex">asdasd</span>
 									</a>
 								</li>
-								<li role="separator" class="divider"></li>
 								<li role="presentation" class="active">
 									<a>
-										<span style="color:#c0392b">Study Date :</span>
+										<span style="color:#7b96b0">Study Date :</span>
 										<span id="study-date">asdasd</span>
 									</a>
 								</li>
 								<li role="presentation" class="active">
 									<a>
-										<span style="color:#c0392b">Study Description :</span>
+										<span style="color:#7b96b0">Study Description :</span>
 										<span id="study-description">asdasd</span>
 									</a>
 								</li>
@@ -63,61 +76,72 @@
 						<div id="preview-template" style="display: none;">
 							<div class="dz-preview dz-file-preview">
 								<div class="dz-details">
-									<div class="dz-filename"><span data-dz-name></span></div>
-									<div class="dz-size" data-dz-size></div>
+									<div class="dz-filename">
+										<span data-dz-name></span>
+									</div>
+									
 								</div>
 							</div>
 						</div>
 					<form action="/target" class="dropzone" id="my-dropzone"></form>
 				</div>
 			</div>
-			<div class="col-lg-9 " id="tool-content">
+			<div class="col-lg-8" id="tool-content">
 				<div class="row">
-					<div class="col-lg-offset-3 col-lg-8 centering">
+					<div class="col-lg-offset-6 col-lg-6 centering">
 						<div class="options" id="toolbar">
 							<ul class="nav nav-pills text-center">
 								<li role="presentation">
-									<a id="activate" class="list-group-item"><i class="fa fa-angle-right"></i></a>
+									<a id="pan" class="list-group-item"><i class="fa fa-arrows fa-lg"></i></a>
 								</li>
 								<li role="presentation">
-									<a id="enableLength" class="list-group-item"><i class="fa fa-arrows-h"></i></a>
+									<a id="zoom" class="list-group-item"><i class="fa fa-search-plus fa-lg"></i></a>
 								</li>
 								<li role="presentation">
-									<a id="pan" class="list-group-item"><i class="fa fa-arrows"></i></a>
+									<a id="defaultStrategy" class="list-group-item"><i class="fa fa-picture-o fa-lg"></i></a>
 								</li>
 								<li role="presentation">
-									<a id="zoom" class="list-group-item"><i class="fa fa-search-plus"></i></a>
+									<a id="osirixStrategy" class="list-group-item"><i class="fa fa-picture-o fa-lg"></i></a>
 								</li>
 								<li role="presentation">
-									<a id="defaultStrategy" class="list-group-item"><i class="fa fa-picture-o"></i></a>
+									<a id="save" class="list-group-item"><i class="fa fa-floppy-o fa-lg"></i></a>
 								</li>
-								<li role="presentation">
-									<a id="osirixStrategy" class="list-group-item"><i class="fa fa-picture-o"></i></a>
-								</li>
-								<li role="presentation">
-									<a id="save" class="list-group-item"><i class="fa fa-floppy-o"></i></a>
-								</li>
-								<li role="presentation">
-									<a id="clearAngleData" class="list-group-item"><i class="fa fa-eraser"></i>   <i class="fa fa-angle-right"></i></a>
-								</li>
-								<li role="presentation">
-									<a id="clearLengthData" class="list-group-item"><i class="fa fa-eraser"></i>   <i class="fa fa-arrows-h"></i></a>
 								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-lg-offset-3 col-lg-8 centering">
-						<div style="width:800px;height:600px;position:relative;color: white;display:inline-block;border-style:solid;border-color:black;"
+					<div class="col-lg-offset-2 col-lg-10 centering" id="canvas">
+						<div style="width:900px;height:650px;position:relative;color: white;display:inline-block;border-style:solid;border-color:black;"
 							oncontextmenu="return false"
 							class='disable-selection noIbar'
 							unselectable='on'
 							onselectstart='return false;'
 							onmousedown='return false;'>
 							<div id="dicomImage"
-								style="width:800px;height:600px;top:0px;left:0px; position:absolute">
+								style="width:900px;height:650px;top:0px;left:0px; position:absolute">
 							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-offset-6 col-lg-6 centering" style="padding-left: 50px">
+						<div class="options" id="toolbar">
+							<ul class="nav nav-pills text-center">
+								<li role="presentation">
+									<a id="activate" class="list-group-item"><i class="fa fa-angle-right fa-lg"></i></a>
+								</li>
+								<li role="presentation">
+									<a id="enableLength" class="list-group-item"><i class="fa fa-arrows-h fa-lg"></i></a>
+								</li>							
+								<li role="presentation">
+									<a id="clearAngleData" class="list-group-item"><i class="fa fa-eraser fa-lg"></i>   <i class="fa fa-angle-right fa-lg"></i></a>
+								</li>
+								<li role="presentation">
+									<a id="clearLengthData" class="list-group-item"><i class="fa fa-eraser fa-lg"></i>   <i class="fa fa-arrows-h fa-lg"></i></a>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</div>
@@ -195,7 +219,6 @@
 			}
 		reader.readAsArrayBuffer(file);
 	}
-
 	function updatePatientInfo(name, birthDate, sex, studyDate, studyDesc){
 		$('#patient-name').text(name);
 		$('#patient-bd').text(birthDate);
@@ -206,6 +229,7 @@
 
 	$(document).ready(function() {
 		
+
 		var element = $('#dicomImage').get(0);
 		cornerstone.enable(element);
 		Dropzone.options.myDropzone = {

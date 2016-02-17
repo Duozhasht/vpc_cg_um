@@ -21,8 +21,8 @@ function loadAndViewImage(imageId) {
             cornerstoneTools.mouseWheelInput.enable(element);
             cornerstoneTools.wwwc.activate(element, 1); // ww/wc is the default tool for left mouse button
             cornerstoneTools.pan.activate(element, 2); // pan is the default tool for middle mouse button
-            cornerstoneTools.zoom.activate(element, 4); // zoom is the default tool for right mouse button
-            cornerstoneTools.zoomWheel.activate(element); // zoom is the default tool for middle mouse wheel
+            //cornerstoneTools.zoom.activate(element, 4); // zoom is the default tool for right mouse button
+            //cornerstoneTools.zoomWheel.activate(element); // zoom is the default tool for middle mouse wheel
             loaded = true;
         }
     }, function(err) {
@@ -39,8 +39,8 @@ function loadAndViewImage(imageId) {
     {
         cornerstoneTools.simpleAngle.deactivate(element, 1);
         cornerstoneTools.length.deactivate(element, 1);
-        cornerstoneTools.pan.activate(element, 2); // 2 is middle mouse button
-        cornerstoneTools.zoom.activate(element, 4);
+        cornerstoneTools.pan.deactivate(element, 2); // 2 is middle mouse button
+        cornerstoneTools.zoom.deactivate(element, 4);
         cornerstoneTools.wwwc.deactivate(element, 1);
         //cornerstoneTools.arrowAnnotate.deactivate(element, 1);
     }
@@ -162,11 +162,6 @@ $(cornerstone).bind('CornerstoneImageLoadProgress', function(eventData) {
     $('#loadProgress').text('Image Load Progress: ' + eventData.percentComplete + "%");
 });
 
-$(document).ready(function(){
-    $("toggle-button").click(function(){
-        $("target").toggle();
-    });
-});
 
 $(document).ready(function() {
 
@@ -211,6 +206,9 @@ $(document).ready(function() {
         $(this).toggleClass("options");
     });
 
+    $("toggle-button").click(function(){
+        $("target").toggle();
+    });
 
 
 });
