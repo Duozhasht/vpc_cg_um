@@ -66,19 +66,15 @@
 						</div>
 					</div>
 					<div class="row" id="dropzone">
-						<div id="preview-template" style="visibility: hidden;">
-							<ul>
-								<li class="dz-preview dz-file-preview">
+						<div id="preview-template" style="visibility: hidden;">							
+								<a href="#" class="dz-preview dz-file-preview">
 									<span class="dz-details">
 										<span class="dz-filename">
 											<span data-dz-name></span>
 										</span>
 										
 									</span>
-								</li>
-							</ul>
-							
-							
+								</a>							
 						</div>
 					<form action="/target" class="dropzone" id="my-dropzone" style="overflow-y: scroll; max-height: 300px;"></form>
 				</div>
@@ -209,10 +205,10 @@
 	var imageFiles = [];
 	var imageIds = [];
 		function previewOnClick(id) {
-	var element = $('#dicomImage').get(0);
-	cornerstone.enable(element);
-	parseDicom(imageFiles[id]);
-	loadAndViewImage(imageIds[id]);
+			var element = $('#dicomImage').get(0);
+			cornerstone.enable(element);
+			parseDicom(imageFiles[id]);
+			loadAndViewImage(imageIds[id]);
 	}
 	String.prototype.insert = function(index, string) {
 	if (index > 0)
@@ -254,6 +250,7 @@
 	this.on("addedfile", function(file) {
 	imageFiles.push(file);
 	$(file.previewElement).attr("onclick", "previewOnClick(" + imageCount + ")");
+	$(file.previewElement).attr("id", "elem" + imageCount + ")");
 	var imageId = cornerstoneWADOImageLoader.fileManager.add(file);
 	imageIds.push(imageId);
 	imageCount++;
