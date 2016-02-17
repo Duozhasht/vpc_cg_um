@@ -34,9 +34,26 @@
 /**********************************/
 /**********************************/
 
+.container-fluid { 
+  background: url(images/bg.jpg) no-repeat center center fixed;
+  opacity: 0.73;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+}
+
+
+html{
+	height: 100%
+}
+
 body {
+	height: 100%;
 	background-color: #141414;
 	color: #ecf0f1;
+	font-family: 'Exo 2', sans-serif;
 
 }
 
@@ -52,9 +69,10 @@ body {
 
 /* Deal with patient info */
 
-.divider {
-	margin-bottom: 10px;
-	margin-bottom: 10px;
+
+.nav-pills>li.active {
+	padding-bottom: 3px;
+	padding-top: 3px;
 }
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
@@ -68,7 +86,9 @@ body {
 
 .list-group-item {
 	background-color: #141414;
-	color: #7b96b0;	
+	color: #7b96b0;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 
@@ -83,6 +103,12 @@ a.list-group-item {
 	color: #ecf0f1;
 }
 
+.spaces>li {
+	padding-left: 8px;
+	padding-right: 8px;
+	opacity: 0.99;
+}
+
 
 
 .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover  {
@@ -91,42 +117,78 @@ a.list-group-item {
 }
 
 
+#sidebar {
+	padding-left: 50px;
+	padding-right: 50px;
+	background-color: #141414;
+	opacity: 0.7;
+}
+.fill { 
+    min-height: 100%;
+    height:auto !important; /* cross-browser */
+    height: 100%; /* cross-browser */
+}
+
 #tool-content {
-	padding-top: 100px;
+	padding-top: 50px;
 	padding-bottom: 50px;
+	padding-left: 22px;
 }
 
 #canvas {
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 #header {
 	padding-top: 50px;
-	padding-bottom: 50px;
+	
 }
 
 #header>hr {
 	width: 90%;
+	border-top: 1px solid #7b96b0;
 }
 
 #patient-info {
 	padding-bottom: 50px;
 }
 
+#patient-info>div>h3 {
+	padding-bottom: 25px;
+}
+
+
 #patient-info>h3 {
 	padding-bottom: 25px;
 }
 
 #my-dropzone {
-	background-color: #141414;
-	border-color: #141414;
+	background-color: transparent;
+	border-color: transparent;
 }
 
 #main-title {
-
+	margin: 15px;
 }
 
+#authors>p {
+	margin: 0;
+	padding-top: 10px;
+	padding-bottom: 10px; 
+}
+
+.dz-details {
+	padding: 0px 0px 0px 0px !important;
+}
+
+.dz-preview {
+
+	} 
+
+.dz-file-preview{
+
+}
 
 
 

@@ -29,7 +29,9 @@ function loadAndViewImage(imageId) {
         alert(err);
     });
 
-    function activate(id)
+  }
+
+function activate(id)
     {
         $('a').removeClass('active');
         $(id).addClass('active');
@@ -37,6 +39,7 @@ function loadAndViewImage(imageId) {
 
     function disableAllTools()
     {
+        var element = $('#dicomImage').get(0);
         cornerstoneTools.simpleAngle.deactivate(element, 1);
         cornerstoneTools.length.deactivate(element, 1);
         cornerstoneTools.pan.deactivate(element, 2); // 2 is middle mouse button
@@ -47,6 +50,7 @@ function loadAndViewImage(imageId) {
 
     //ANGLE _______________________________________________________________
   $('#activate').click(function() {
+      var element = $('#dicomImage').get(0);
       activate("#activate");
       disableAllTools();
 
@@ -56,12 +60,14 @@ function loadAndViewImage(imageId) {
       return false;
   });
   $('#deactivate').click(function() {
+      var element = $('#dicomImage').get(0);
       activate("#deactivate");
       cornerstoneTools.simpleAngle.deactivate(element, 1);
       return false;
   });
 
   $('#clearAngleData').click(function() {
+      var element = $('#dicomImage').get(0);
       if (confirm("Are you sure you want to delete the angle?") == true) {
         cornerstoneTools.clearToolState(element, "simpleAngle");
         cornerstone.updateImage(element);
@@ -72,12 +78,14 @@ function loadAndViewImage(imageId) {
   //LENGHT _______________________________________________________________
 
     $('#enableLength').click(function() {
+        var element = $('#dicomImage').get(0);
         activate('#enableLength')
         disableAllTools();
         cornerstoneTools.length.activate(element, 1);
     });
 
     $('#clearLengthData').click(function() {
+        var element = $('#dicomImage').get(0);
         if (confirm("Are you sure you want to delete the length?") == true) {
           cornerstoneTools.clearToolState(element, "length");
           cornerstone.updateImage(element);
@@ -86,12 +94,14 @@ function loadAndViewImage(imageId) {
 
 //ZOOM AND PAN_________________________________________________________
     $('#pan').click(function() {
+        var element = $('#dicomImage').get(0);
         activate('#pan')
         disableAllTools();
         cornerstoneTools.pan.activate(element, 3); // 3 means left mouse button and middle mouse button
     });
 
     $('#zoom').click(function() {
+        var element = $('#dicomImage').get(0);
         activate('#zoom')
         disableAllTools();
         cornerstoneTools.zoom.activate(element, 5); // 5 means left mouse button and right mouse button
@@ -99,6 +109,7 @@ function loadAndViewImage(imageId) {
 
 //TRESHOLD IMAGE_______________________________________________________________
     cornerstoneTools.wwwc.strategies.osirix  = function(eventData) {
+
         var imageDynamicRange = eventData.image.maxPixelValue - eventData.image.minPixelValue;
         var multiplier = imageDynamicRange / 1024;
 
@@ -110,6 +121,7 @@ function loadAndViewImage(imageId) {
     };
 
     $('#enable').click(function() {
+        var element = $('#dicomImage').get(0);
         activate("#enable");
         cornerstoneTools.wwwc.enable(element);
         disableAllTools();
@@ -117,18 +129,21 @@ function loadAndViewImage(imageId) {
     });
 
     $('#activateIM').click(function() {
+        var element = $('#dicomImage').get(0);
         activate("#activateIM");
         cornerstoneTools.wwwc.activate(element, 1);
         return false;
     });
 
     $('#deactivate').click(function() {
+        var element = $('#dicomImage').get(0);
         activate("#deactivate");
         cornerstoneTools.wwwc.deactivate(element, 1);
         return false;
     });
 
     $('#defaultStrategy').click(function() {
+        var element = $('#dicomImage').get(0);
         activate("#defaultStrategy");
         disableAllTools();
         cornerstoneTools.wwwc.activate(element, 1);
@@ -137,6 +152,7 @@ function loadAndViewImage(imageId) {
     });
 
     $('#osirixStrategy').click(function() {
+        var element = $('#dicomImage').get(0);
         activate("#osirixStrategy");
         disableAllTools();
         cornerstoneTools.wwwc.activate(element, 1);
@@ -146,69 +162,10 @@ function loadAndViewImage(imageId) {
 
 //SAVE_______________________________________________________________
     $('#save').click(function() {
+        var element = $('#dicomImage').get(0);
+        console.log("cenas");
         var filename = $("#filename").val();
         disableAllTools();
         cornerstoneTools.saveAs(element, filename);
         return false;
     });
-
-    $(cornerstone).bind('CornerstoneImageLoadProgress', function(eventData) {
-        $('#loadProgress').text('Image Load Progress: ' + eventData.percentComplete + "%");
-    });
-
-  }
-
-$(cornerstone).bind('CornerstoneImageLoadProgress', function(eventData) {
-    $('#loadProgress').text('Image Load Progress: ' + eventData.percentComplete + "%");
-});
-
-
-$(document).ready(function() {
-
-    var element = $('#dicomImage').get(0);
-    cornerstone.enable(element);
-
-    $('#selectFile').on('change', function(e) {
-        // Add the file to the cornerstoneFileImageLoader and get unique
-        // number for that file
-        var file = e.target.files[0];
-        var imageId = cornerstoneWADOImageLoader.fileManager.add(file);
-        loadAndViewImage(imageId);
-    });
-
-    $('#toggleModalityLUT').on('click', function() {
-        var applyModalityLUT = $('#toggleModalityLUT').is(":checked");
-        console.log('applyModalityLUT=', applyModalityLUT);
-        var image = cornerstone.getImage(element);
-        var viewport = cornerstone.getViewport(element);
-        if(applyModalityLUT) {
-            viewport.modalityLUT = image.modalityLUT;
-        } else {
-            viewport.modalityLUT = undefined;
-        }
-        cornerstone.setViewport(element, viewport);
-    });
-
-    $('#toggleVOILUT').on('click', function() {
-        var applyVOILUT = $('#toggleVOILUT').is(":checked");
-        console.log('applyVOILUT=', applyVOILUT);
-        var image = cornerstone.getImage(element);
-        var viewport = cornerstone.getViewport(element);
-        if(applyVOILUT) {
-            viewport.voiLUT = image.voiLUT;
-        } else {
-            viewport.voiLUT = undefined;
-        }
-        cornerstone.setViewport(element, viewport);
-    });
-
-    $('a#hideOP').click(function(){
-        $(this).toggleClass("options");
-    });
-
-    $("toggle-button").click(function(){
-        $("target").toggle();
-    });
-
-
-});
