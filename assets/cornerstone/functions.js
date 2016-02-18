@@ -17,10 +17,10 @@ function loadAndViewImage(imageId) {
         $('#toggleVOILUT').attr("checked",viewport.voiLUT !== undefined);
         cornerstone.displayImage(element, image, viewport);
         if(loaded === false) {
-            cornerstoneTools.mouseInput.enable(element);
-            cornerstoneTools.mouseWheelInput.enable(element);
-            cornerstoneTools.wwwc.activate(element, 1); // ww/wc is the default tool for left mouse button
-            cornerstoneTools.pan.activate(element, 2); // pan is the default tool for middle mouse button
+            //cornerstoneTools.mouseInput.enable(element);
+            //cornerstoneTools.mouseWheelInput.enable(element);
+            //cornerstoneTools.wwwc.activate(element, 1); // ww/wc is the default tool for left mouse button
+            //cornerstoneTools.pan.activate(element, 2); // pan is the default tool for middle mouse button
             //cornerstoneTools.zoom.activate(element, 4); // zoom is the default tool for right mouse button
             //cornerstoneTools.zoomWheel.activate(element); // zoom is the default tool for middle mouse wheel
             loaded = true;
@@ -97,6 +97,7 @@ function activate(id)
         var element = $('#dicomImage').get(0);
         activate('#pan')
         disableAllTools();
+        cornerstoneTools.zoom.activate(element, 4); // 4 means right mouse button
         cornerstoneTools.pan.activate(element, 3); // 3 means left mouse button and middle mouse button
     });
 

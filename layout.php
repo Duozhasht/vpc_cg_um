@@ -30,55 +30,73 @@
 					
 					<div class="row" id="patient-info">
 						<div class="col-xs-12">
-							<h4 class="text-center">Patient Info</h4>
+							<h4 class="text-center" id="patient-info-header">Patient Info</h4>
 							<ul class="nav nav-pills nav-stacked" id="patient-info-ul">
 								<li role="presentation" class="active">
 									<a>
 										<span style="color:#7b96b0">Patient Name :</span>
-										<span id="patient-name">asdasd</span>
+										<span id="patient-name"></span>
 									</a>
 								</li>
 								<li role="presentation" class="active">
 									<a>
 										<span style="color:#7b96b0">Patient Birth Date :</span>
-										<span id="patient-bd">asdasd</span>
+										<span id="patient-bd"></span>
 									</a>
 								</li>
 								<li role="presentation" class="active">
 									<a>
 										<span style="color:#7b96b0">Patient Sex :</span>
-										<span id="patient-sex">asdasd</span>
+										<span id="patient-sex"></span>
 									</a>
 								</li>
 								<li role="presentation" class="active">
 									<a>
 										<span style="color:#7b96b0">Study Date :</span>
-										<span id="study-date">asdasd</span>
+										<span id="study-date"></span>
 									</a>
 								</li>
 								<li role="presentation" class="active">
 									<a>
 										<span style="color:#7b96b0">Study Description :</span>
-										<span id="study-description">asdasd</span>
+										<span id="study-description"></span>
 									</a>
 								</li>
 							</ul>
 						</div>
 					</div>
+					<div class="row text-center" id="files-here">
+						<h3 class="text-center">Drag Your Files to the Page </h3>
+						<h5 class="text-center" style="color:#7b96b0">or click the button to choose a file</h5>
+					</div>
+					<div class="row text-center hidden" id="files-title">
+						<h4 class="text-center">Files Added</h4>
+					</div>
+					<div class="row text-center">
+						<button type="button" class="nice-button" id="clickable">Open File</button>
+					</div>
 					<div class="row" id="dropzone">
+						<div id="previews" class="dropzone-previews" style="overflow-y: auto; max-height: 300px;">
 						<div id="preview-template" style="visibility: hidden;">							
+								<div class="col-xs-12">
 								<a href="#" class="dz-preview dz-file-preview">
 									<span class="dz-details">
 										<span class="dz-filename">
+											<span style="color: #7b96b0;">File name: </span>
 											<span data-dz-name></span>
 										</span>
-										
 									</span>
-								</a>							
+								</a>
+								</div>							
 						</div>
-					<form action="/target" class="dropzone" id="my-dropzone" style="overflow-y: scroll; max-height: 300px;"></form>
+					<!-- <form action="/target" class="dropzone" id="my-dropzone" style="overflow-y: scroll; max-height: 300px;"></form>  -->
+						
+							
+						</div>
 				</div>
+
 				<div class="row text-center" id="authors" style="min-height: 100%;">
+					<hr>
 					<p>Crafted by <a href="#">Tiago</a>, <a href="#">Rafael</a>, <a href="#">Carlos</a>
 					@
 					<!--<a href="#"><span style="color: #D03B00">Minho's</span> <span style="color: #D03B00">University</span></a></p>-->
@@ -240,22 +258,37 @@
 	$('#study-date').text(studyDate);
 	$('#study-description').text(studyDesc);
 	}
-	Dropzone.options.myDropzone = {
-	previewTemplate: document.getElementById('preview-template').innerHTML,
+	
+
+
+	var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+    	url: "/upload/url", // Set the url
+    	previewsContainer: "#previews", // Define the container to display the previews
+    	clickable: "#clickable",
+    		previewTemplate: document.getElementById('preview-template').innerHTML,
 	// Prevents Dropzone from uploading dropped files immediately
 	autoProcessQueue: false,
 	init: function() {
 	var myDropzone = this;
+	var flag = false;
 	//this function handle addedfile
 	this.on("addedfile", function(file) {
 	imageFiles.push(file);
 	$(file.previewElement).attr("onclick", "previewOnClick(" + imageCount + ")");
 	$(file.previewElement).attr("id", "elem" + imageCount + ")");
 	var imageId = cornerstoneWADOImageLoader.fileManager.add(file);
+	if(flag == false)
+	{	
+		$('#files-title').removeClass('hidden');
+		$('#files-here').addClass('hidden');
+		flag = true;
+	}
 	imageIds.push(imageId);
 	imageCount++;
 	});
 	}
-	};
+    	
+  });
+
 	</script>
 </html>
