@@ -204,4 +204,15 @@ a.list-group-item {
 
 
 
+#last {
+	position:relative;color: #7b96b0;
+	display:inline-block;
+	border: 2px solid #7b96b0; 
+	background-color: #141414
+}
 
+#dicomImage {
+	top:0px;
+	left:0px;
+	position:absolute;
+}

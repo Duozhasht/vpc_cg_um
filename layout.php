@@ -128,7 +128,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-10 centering" id="canvas">
-						<div style="width:1000px;height:650px;position:relative;color: #7b96b0;display:inline-block;border: 2px solid #7b96b0; background-color: #141414"
+						<div id="last" style="width:1000px;height:650px;"
 							oncontextmenu="return false"
 							class='disable-selection noIbar'
 							unselectable='on'
@@ -188,6 +188,21 @@
 	<!-- Dropzone.js-->
 	<script src="assets/dropzone/dropzone.js"></script>
 	<script>
+	/*
+		var width = 1000;
+		var height = 650;
+
+
+	$(window).onresize = function(){
+		
+		var pageWidth = $(window).width();
+		$('#last').removeAttr('style');
+		$('#last').addAttr('style','width:'+width+'px;height:'+height+'px;');
+		$('#dicomImage').removeAttr('style');
+		$('#dicomImage').addAttr('style','width:'+(width-5)+'px;height:'+(height-5)+'px;');
+	};
+	*/
+
 	
 	$('.Scrollable').on('DOMMouseScroll mousewheel', function(ev) {
 	var $this = $(this),
